@@ -1,0 +1,31 @@
+ <form ngNativeValidate> 
+  <div class="container">
+   <div class="header">
+      <h1>Comparator Tool</h1>
+    </div>
+    <br/>
+    <label><b>Source Schema :</b></label>
+    <input type="text" name="sourceSchema" placeholder = "Enter Source Schema" [(ngModel)]= "sourceSchema" required/> <br /><br /> 
+    <label><b>Target Schema :</b></label>
+    <input type="text" name="targetSchema" placeholder = "Enter Target Schema" [(ngModel)]= "targetSchema" required/> <br /><br /> 
+ 
+    <button name="submit" value="Submit" (click) = "schemaValidate()"> Validate </button>
+ 
+
+    <!-- <div *ngIf = "next"> -->
+    <span *ngIf = "nextScreen"> 
+    <button  value = "next" name = "Next" [routerLink] = "'/schemaResponse'" style="float: right; margin-left: 10px;">Next</button> 
+    </span>
+    <button value = "previous" name = "previous"  [routerLink] = "'/login'" style="float: right;"> Previous</button> 
+
+    <span *ngIf = "err">
+      <p style="color: red; margin: auto; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Enter Valid Schema Values</p>
+    </span>
+   <!-- </div> -->
+
+   
+  </div> 
+  </form>
+
+ 
+ 

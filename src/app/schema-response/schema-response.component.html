@@ -1,0 +1,70 @@
+	<form >
+    <div class="divcontainer">
+      <div class="header">
+        <h1>Comparator Tool</h1>
+      </div>
+      <br/>
+    <h3> Select one of the table in each schema to compare and click submit...!!! </h3>
+    <label class="container"> DDL
+    <input type = "radio" name = "ddl_dml" value = "DDL" [(ngModel)] = "ddl_dml">
+    <span class="checkmark"></span> 
+    </label>
+
+    <label class="container"> DML
+    <input type = "radio" name = "ddl_dml" value = "DML" [(ngModel)] = "ddl_dml"> 
+    <span class="checkmark"></span> 
+    </label>
+
+    <div class = "row">
+        <div class = "column">
+        	<h2 style="font-size: 20px;font-family: Arial, Helvetica, sans-serif ">Source Schema Tables</h2>
+
+        		<span *ngFor = "let usr of srcList">
+                <label class="container">
+                <input type = "radio" [(ngModel)] = "srcTable" name = "srcTable" value = {{usr.table_name}} > {{usr.table_name}}
+                <span class="checkmark"></span>
+                </label>
+                <!-- <br/> -->
+
+            </span>
+        </div>
+        <div class = "column">
+        	<h2 style="font-size: 20px; font-family: Arial, Helvetica, sans-serif">Target Schema Tables</h2>
+            
+            <span *ngFor = "let usr of tarList">
+              <label class="container">
+              <input type = "radio" [(ngModel)] = "tarTable" name = "tarTable" value = {{usr.table_name}}> {{usr.table_name}}
+              <span class="checkmark"></span>
+              </label>
+              <!-- <br/> -->
+            </span>
+            
+        </div>
+       </div>
+
+  <button  value="Submit" name ="submit" (click) = "responseValidate()"> Submit </button>
+
+      <span *ngIf = "load">
+        <button class="buttonload" style="float: right; margin-left: 10px">
+          <i class = "fa fa-refresh fa-spin"></i>Loading...
+        </button> 
+      </span> 
+      
+        <span *ngIf = "nextDdl"> 
+          <button  value = "next" name = "Next" [routerLink] = "'/ddl'" style="float: right; margin-left: 10px;">Next</button> 
+        </span>
+      
+         <span *ngIf = "nextDml"> 
+          <button  value = "next" name = "Next" [routerLink] = "'/dml'" style="float: right; margin-left: 10px;" >Next</button> 
+         </span>
+
+         <span *ngIf = "error">
+           <p style="color: red; margin: auto; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Select any one option DDL or DML for comparison.</p>
+         </span>
+
+         <button value = "previous" name = "previous"  [routerLink] = "'/schema'" style="float: right;"> Previous</button> 
+
+    </div>
+   </form>
+
+   

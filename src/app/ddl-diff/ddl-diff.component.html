@@ -1,0 +1,85 @@
+   
+<form>
+    <div class = "container">
+        <div class="header">
+            <h1>Comparator Tool</h1>
+        </div>
+        <br/>  
+  
+    <table style = "width:100%">
+            <tr>
+                <th>OWNER</th>
+                   <th>TABLE NAME</th>
+                <th>COLUMN NAME</th>
+                <th>COLUMN ID</th>
+                <th>NULLABLE</th>
+                  <th>DATA TYPE</th>
+                <th>DATA LENGTH</th>
+            </tr>
+
+            <tr *ngFor = "let usr of list" >
+                
+                    <td>{{usr.owner}}</td>
+                    <td>{{usr.table_name}}</td>
+                    <td>{{usr.column_name}}</td>
+                    <td>{{usr.column_id}}</td>
+                    <td>{{usr.nullable}}</td>
+                    <td>{{usr.data_type}}</td>
+                    <td>{{usr.data_length}}</td>
+                
+
+            </tr>
+
+    </table>
+
+    <br/>
+
+    <table style = "width:100%">
+            <tr>
+                <th>OWNER</th>
+                   <th>TABLE NAME</th>
+                <th>COLUMN NAME</th>
+                <th>STATUS</th>
+                <th>CONSTRAINT TYPE</th>
+                  <th>POSITION</th>
+                <th>REF COLUMN NAME</th>
+            </tr>
+
+            <tr *ngFor = "let usr of keyList">
+                    <td>{{usr.owner}}</td>
+                    <td>{{usr.table_name}}</td>
+                    <td>{{usr.column_name}}</td>
+                    <td>{{usr.status}}</td>
+                    <td>{{usr.constraint_type}}</td>
+                    <td>{{usr.position}}</td>
+                    <td>{{usr.r_column_name}}</td>
+
+            </tr>
+
+    </table>
+
+    <br/>
+
+    <table style="width:50%">
+        <tr>
+            <th>OWNER</th>
+               <th>TABLE NAME</th>
+            <th>NO.OF ROWS</th>
+        </tr>
+
+        <tr>
+            <td>{{srcOwner}}</td>
+            <td>{{srcTable}}</td>
+            <td>{{sourceRows}}</td>
+           </tr>
+           <tr>
+             <td>{{tarOwner}}</td>
+             <td>{{tarTable}}</td>
+             <td>{{targetRows}}</td>
+        </tr>
+
+    </table>
+    <button value = "previous" name = "previous"  [routerLink] = "'/schemaResponse'" style="float: right;"> Previous</button> 
+
+    </div>
+</form>

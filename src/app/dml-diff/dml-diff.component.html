@@ -1,0 +1,68 @@
+	<form>
+        <div class = "container">
+            <div class="header">
+                <h1>Comparator Tool</h1>
+            </div>
+            <br/>
+        <p> Available in Source but missing in Target: </p>
+        <div class="overflow-x:auto;">
+
+            <table style = "width:100%">        
+        		<tr>
+        		    <th *ngFor = "let col of srcColumns">{{col}}</th>
+        			<th>TABLE NAME</th>
+                    <th>OWNER</th>
+        		</tr>
+
+                <tr *ngFor = "let usr of dataSrcTarList">
+    				<td *ngFor = "let col of usr">{{col}}</td>
+     			</tr>
+
+            </table>
+
+        <br/>
+
+        <p> Available in Target but missing in Source: </p>
+
+            <table style = "width:100%">
+                <tr>
+                    
+                    <th *ngFor = "let col of tarColumns">{{col}}</th>
+                    <th>TABLE NAME</th>
+                    <th>OWNER</th>
+
+                </tr>
+
+                <tr *ngFor = "let usr of dataTarSrcList">
+                        <td *ngFor = "let col of usr">{{col}}</td>
+                </tr>
+
+            </table>
+            <br/>
+
+        <p> Data change in Source and Target tables:</p>
+
+            <table style = "width:50%" *ngFor = "let diffCol of diffColumns; let i = index">
+                <tr>
+                    <th *ngFor = "let col of diffCol">{{col}}</th>
+                    <th>TABLE NAME</th>
+                    <th>OWNER</th>
+                </tr>
+
+                <tr *ngFor = "let data of diffData[i]; let j = index"> 
+                    <ng-container *ngFor = "let x of data; let k = index">
+                        <td>{{diffData[i][j][k]}}</td>
+                        <!-- <td>{{data}}</td> -->
+                        <!-- <td>{{i}}</td>
+                        <td>{{diffData[i]}}</td> -->
+                    </ng-container>
+                </tr>
+              
+                <br/>
+            </table>
+            <br/>
+</div>
+</div>
+<button value = "previous" name = "previous"  [routerLink] = "'/schemaResponse'" style="float: right;"> Previous</button> 
+
+</form>
